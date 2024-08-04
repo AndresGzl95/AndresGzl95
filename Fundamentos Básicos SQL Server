@@ -1,0 +1,8 @@
+Documentación sobre lo que he aprendido durante 2 años trabajando como Analista de Datos.
+-Recopilación de documentos.
+-Fundamentos Basicos de SQL Server:
+/*Mandar a llamar la base de datos que se usara para la consulta de datos*/
+Use DataBaseName
+Go
+*/Selecciona todos los datos de una tabla*/
+-SELECT * FROM TableName
