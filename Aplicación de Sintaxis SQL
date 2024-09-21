@@ -1,0 +1,184 @@
+Curso de base de datos SQL SERVER
+#Creacion y eliminacion de una tabla
+CREATE DATABASE NombreDB
+
+#Eliminar BD
+DROP DATABASE NombreBD
+
+#EJEMPLO Creacion 
+CREATE TABLE nombre_table(
+id_usuario int NOT  NULL,
+nombre VARCHAR(50)
+);
+
+#Inserción de datos
+INSERT INTO table_name VALUES(1n,2n,...,Mn)
+
+#consultas
+SELECT * FROM table_name        #Selecciona todos los datos contenidos en una tabla
+SELECT campo1 FROM table_name   #Selecciona 1 o más columnas de una tabla
+
+#cuando usamos 2 tablas o mas
+SELECT table1.campo1,table2.campo1 FROM table1,table2    #Selecciona datos de dos tablas simultaneamente, para ello primero agregar el nombre de la tabla
+                                                         # Tabla1.campo1 seguido de un punto y el campo que deseas buscar.
+
+
+#uso del where
+SELECT * FROM table1 WHERE condicion1=''      #Condiciona la seleccion del dato dentro de la tabla.
+ 
+#operadores relacionales
+ =  #Igual
+ <  #menor que
+ >  #mayor que
+ <= #menor igual
+ >= #mayor igual
+ <> #diferente a
+
+#Ejemplo de operadores relacionales
+ SELECT campo1 FROM table_name WHERE condicion >= 1
+ SELECT campo1 FROM table_name WHERE condicion1 <> 'valor'
+ 
+#eliminacion de registros
+ DELETE     #elimina registros
+ DROP       #elimina la estructura
+ TRUNCATE   #elimina los registros(reset)
+#Ejemplo 
+DELETE FROM table_name                      #Elimina todos los datos contenidos dentro de la tabla, aunque se eliminen los registros, no resetea el incrementador,
+                                            #comienza desde donde se elimino.
+DELETE FROM table_name WHERE condicion=''   #Elimina los registros en especifico de la tabla acorde a la condición puesta 
+ 
+TRUNCATE TABLE table_name                    #Trunca los datos contenidos dentro de la tabla, sin que el resultado afecte a la columnas, este si permite resetear el incrementador 
+DROP TABLE table_name                        #Elimina la tabla
+
+#actualizar registros UPDATE
+UPDATE table_name SET campo1='valor' WHERE condicion1=''    #Actualiza los registros de la tabla, mediante SET asignamos el nuevo valor al campo que se desea
+                                                            #actualizar, con la condicional WHERE condicionamos en que casos deberá hacer la actualización
+                                                            #de lo contrario aplicara la actualización al campo en toda la tabla
+ #Identity
+ IDENTITY: propiedad extra que se puede colocar a los campos,
+ sirve como autoincremento, es decir, empieza de 1 y su implemento es de 1
+ No permite valores nulos
+ permite la repeticion
+ permite que un solo campo de la tabla tenga esa propiedad
+#EJEMPL0
+CREATE TABLE(
+campo1 INT IDENTITY,
+campo2 VARCHAR(MAX));
+ 
+#operadores aritmeticos
+ * #Multiplicacion
+ + #Suma
+ - #Resta
+ / #División
+ % #Modulo
+ 
+#sacar ganancias
+SELECT campo1 - campo2 FROM table_name
+SELECT campo1 - campo2 FROM table_name WHERE condicion1=''
+
+#presupuesto
+SELECT campo1, campo2 * 10 FROM table_name
+SELECT campo1, campo2 * 10 FROM table_name WHERE condicion1=''
+
+#actualizacion
+UPDATE table_name SET campo1 = campo2 + (campo3 * 0.1) WHERE condicion1=1
+
+#funciones de agregado
+COUNT()  #Conteo
+SUM()    #suma
+MAX      #maximo
+MIN      #minimo
+ 
+#contar
+SELECT COUNT(campo1) FROM table_name
+SELECT COUNT(campo1) FROM table_name WHERE campo2>200
+
+#suma
+SELECT SUM(campo1) FROM table_name
+
+#maximo y minimo
+SELECT MAX(campo1) FROM table_name
+SELECT MIN(campo1) FROM table_name
+
+#concatenacion y alias
+#concatenacion es igual a la union de dos o mas cadenas
+
+SELECT '' + campo1 FROM table_name
+select '' + campo1 FROM table_name WHERE condicion=''
+
+#Alias
+SELECT campo1, campo2 FROM table_name   #Query SELECT sin Alias
+SELECT campo1 AS 'ALIAS', campo2 FROM table_name    #Con el comando AS renombramos el campo1, los cambios son temporales.
+
+#longitudes
+SELECT LEN('Tutoriales basedatos');    #cuenta los caracteres, longitud de una cadena
+
+#eliminacion de espacios
+SELECT LTRIM('          tutoriales basedatos');
+SELECT RTRIM('     tutoriales basedatos  ');
+
+#Remplazar caracteres
+SELECT REPLACE('Hola a todos','a todos','mundo');     #Mediante el comando REPLACE podemos cambiar una cadena dentro de un campo en especifico
+                                                    #en este caso se reemplazara la palabra "todos" por "mundo" por lo que el resultado sera "Hola mundo"
+
+#ORDER BY
+SELECT * FROM table_name ORDER BY campo;      #Ordena los datos mediante el campo especificado, de manera automatica muestra los datos de manera ascendente
+SELECT * FROM table_name ORDER BY campo ASC   #Ordena los datos de manera ascendente
+SELECT * FROM table_name ORDER BY campo DESC   #Oderna los datos de manera descendente
+SELECT * FROM table_name ORDER BY campo1,campo2  #Ordena los datos mediante dos campos en especifico
+SELECT * FROM table_name ORDER BY campo1 DESC,campo2 ASC    #Ordena los datos de manera descendente para el campo1 y ascendente para campo2
+
+#OPERADORES LOGICOS
+!=     #NOT: negacion
+&&     #AND: y
+||     #OR: o
+
+SELECT * FROM table_name WHERE NOT condicion = ''                          #excepcion del campo
+SELECT * FROM table_name WHERE condicion1 = '' AND condicion2 = ''         #cuando se usa el mismo campo no arroja nada, todas las condiciones unidas por el and deben cumplir
+SELECT * FROM table_name WHERE condicion1 > 1 OR condicion2 < 6;           #Al menos una de las condiciones se debe de cumplir
+SELECT * FROM table_name WHERE NOT condicion1 = 1 OR nombre = ''           #Combinacion de operadores logicos
+
+#BETWEEN
+
+SELECT * FROM table_name WHERE condicion1 > 200 AND condicion2 < 300
+SELECT * FROM table_name WHERE condicion1 BETWEEN 200 AND 300
+
+#LIKE NOT LIKE: SON ESPECIFICAMENTE PARA CADENAS
+SELECT * FROM table_name WHERE condicion LIKE '%de%'        #ayuda a buscar los datos que contengan la palabra o cadena
+SELECT * FROM table_name WHERE condicion NOT LIKE '%de%';   #ayuda a buscar los datos que no contengan la palabra o cadena
+
+SELECT * FROM table_name WHERE condicion LIKE 'el%';        #buscar los datos que empiecen con la palabra "el"
+SELECT * FROM table_name WHERE condicion LIKE '%el';        #busca las que terminan con la palabra el
+
+SELECT * FROM table_name WHERE condicion LIKE '%aura%';     #busca en toda la cadena
+SELECT * FROM table_name WHERE condicion LIKE '%_ura%';       #el guiOn bajo es un comodin y busca toda la palabra que esta contenida en toda la cadena
+ 
+#DISTINCT:manda a traer un solo valor cuando este esta repetido
+
+SELECT DISTINCT campo FROM table_name ORDER BY campo
+
+#TOP: ayuda a seleccionar un numero de registros
+
+SELECT TOP 1 * FROM table_name;    #muestra solo un elemento
+
+#JOIN: Union de tablas
+SELECT * FROM alumnos
+SELECT * FROM carrera
+SELECT * FROM datos
+#tablas imaginarias para poder extraer los datos que se solicitan
+
+SELECT * FROM datos JOIN alumnos ON datos.id_alumno = alumno.id_alumno JOIN carrera ON alumnos.i_carrera = carrera.id_carrera
+
+#JOIN LEFT ayudan a mostrar todos los datos aunque no tengan relacion
+
+SELECT * FROM datos INNER JOIN alumnos ON datos.id_alumno = alumno.id_alumno
+//no muestra nada
+SELECT * FROM alumnos LEFT JOIN datos ON alumnos.id_alumno = datos.id_alumno
+
+/*TOMAR EN CUENTA QUE TANTO LEFT Y RIGHT SOLAMENTE SE USA A DOS TABLAS*/
+
+#RIGHT JOIN
+SELECT * FROM datos RIGHT JOIN alumnos ON datos.id_alumno = alumno.id_alumno
+/*JOIN GROUP*/
+SELECT * FROM datos INNER JOIN alumnos ON datos.id_alumno = alumno.id_alumno
+JOIN carrera ON alumnos.id_carrera = carrera.id_carrera WHERE edad > 18 GROUP BY alumno.nombre,carrera.carrera
