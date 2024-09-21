@@ -6,3 +6,35 @@ Use DataBaseName
 Go
 */Selecciona todos los datos de una tabla*/
 -SELECT * FROM TableName
+1.-DataBase: Data is a stored in a database. A database is a collection of data that is organized
+in a manner that facilities case of access; as well as efficent management and updaiting.
+For example, a database can be used to store information about contacts, banks, accounts, people, etc.
+
+2.- Tables: A database is made up of tables that stores relevant information. A table store and displays
+daa in a structured format consisting of COLUMNS and ROWS that are similar to those seen in Excel spread sheets.
+For example, here is a table called Customers containing data about customers and their locations.
+
+ID	firstname	lastname	   city	       age
+1	Jhon	    Smith	      New York	    24
+2	David	    Williams	  L.A	        42
+3	Chloe	    Anderson	  Chicago	    65
+
+This table has 5 columns: ID, firstname, lastname, city, age.
+Database offen contain multiple tables, each designed for a specific purpose.
+
+3.- SQL: is used to access and manipulate a database. It can be used to select and filter, add
+and remove data and tables, and much more.
+
+4.- Selecting data: The SELECT statement is used to select data from a table. For example:
+                
+                            - SELECT * FROM Customers
+
+Instead if "*", we can specify a column that we want to select. For example, let´s select
+only the city column:
+                            - SELECT city FROM Customers
+
+We can specify multiple columns in the SELECT statement by separating them with commas. For example:
+
+                            -SELECT firstname,lastname FROM Customers.
+
+5.-
