@@ -37,4 +37,22 @@ We can specify multiple columns in the SELECT statement by separating them with 
 
                             -SELECT firstname,lastname FROM Customers.
 
-5.-
+5.-Case sensitivity: SQL is case insensitive. The following statements are equivalent and will produce the same result:
+
+                            -Select cIty from Customers;
+                            -SELECT City FRom Customers;
+                            -sElEct ciTY From Customers;
+
+Nota: para mantener un código limpio dentro de las sentencias de los Querys, siempre codificar en minusculas o mayusculas
+unicamente, no usar combinaciones como los casos anteriores.
+
+6.- Sorting Data: The ORDER BY command is used to sort the data in a SELECT statement. For example, let´s select all
+the data from the customers table, sorted by the firstname column:
+
+                            -SELECT * FROM Csutomers ORDER BY firstname
+
+The ORDER BY command comes after the table name in the SELECT statements. By default ORDER BY sort the result
+in ascending order.
+We can specify the ordering using the ASC and DESC kerwords. For example, let´s order the data in descending order:
+
+                            -SELECT * FROM Customers ORDER BY firstname DESC
