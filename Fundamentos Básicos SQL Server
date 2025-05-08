@@ -1,6 +1,17 @@
 Documentación sobre lo que he aprendido durante 2 años trabajando como Analista de Datos.
 -Recopilación de documentos.
 -Fundamentos Basicos de SQL Server:
+
+1.-DataBase: Data is a stored in a database. A database is a collection of data that is organized
+in a manner that facilities case of access; as well as efficent management and updaiting.
+For example, a database can be used to store information about contacts, banks, accounts, people, etc.
+
+2.- Tables: A database is made up of tables that stores relevant information. A table store and displays
+daa in a structured format consisting of COLUMNS and ROWS that are similar to those seen in Excel spread sheets.
+For example, here is a table called Customers containing data about customers and their locations.
+
+
+
 /*Mandar a llamar la base de datos que se usara para la consulta de datos*/
 Use DataBaseName
 Go
